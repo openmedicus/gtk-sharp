@@ -65,6 +65,25 @@ class Helper(object):
         return ret
 
     @staticmethod
+    def install_pacman_deps():
+        Helper.run_pacman_cmd(['-Sy'])
+
+        args = ['--needed', '--noconfirm', '-S']
+        args += 'unzip autoconf automake libtool pkg-config make'.split(' ')
+
+        deps_arch = 'gcc glib2 pango atk gtk3 zlib libiconv'
+        args += ['mingw-w64-i686-{0}'.format(i) for i in deps_arch.split(' ')]
+        args += ['mingw-w64-x86_64-{0}'.format(i) for i in deps_arch.split(' ')]
+
+        Helper.run_pacman_cmd(args)
+
+    @staticmethod
+    def run_pacman_cmd(pacman_args):
+        msyspath = 'C:\\msys64'
+        pacman_path = join(msyspath, 'usr\\bin\\pacman.exe')
+        return Helper.run_cmd([pacman_path] + pacman_args, msyspath)
+
+    @staticmethod
     def get_gtk_version_msys(msyspath):
         ret = ''
         pacman_path = join(msyspath, 'usr\\bin\\pacman.exe')

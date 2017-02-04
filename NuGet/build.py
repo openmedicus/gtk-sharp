@@ -53,8 +53,11 @@ class Build(object):
 
         if build_type == 'clean':
             self.clean()
+            return
 
-        elif build_type == 'gtksharp':
+        Helper.install_pacman_deps()
+
+        if build_type == 'gtksharp':
             profile = GtkSharp()
             profile.clean()
             profile.build()
