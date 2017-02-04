@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-import os, shutil
-from pybuild.ProfileBase import ProfileBase
+import os
+import shutil
 from os.path import abspath, join
+
 from pybuild.Helper import Helper
+from pybuild.ProfileBase import ProfileBase
+
 
 class GtkSharp(ProfileBase):
-
     def __init__(self):
         """Class Init"""
         super().__init__()
@@ -52,7 +54,6 @@ class GtkSharp(ProfileBase):
                 f.write('make\n')
             cmds = [self.LinuxBashPath, buildfile]
             cmd = Helper.run_cmd(cmds, self.SrcDir)
-
 
     def copy(self):
         """Copy the .Net 4.5 dll's to the build dir"""
