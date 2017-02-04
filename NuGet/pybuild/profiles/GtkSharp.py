@@ -29,8 +29,8 @@ class GtkSharp(ProfileBase):
         if os.name == 'nt':
             print("Building .Net GtkSharp using MSYS2")
             with open(buildfile, 'w') as f:
-                f.write('PATH=$PATH:/c/Program\ Files\ \(x86\)/Microsoft\ SDKs/Windows/v10.0A/bin/NETFX\ 4.6\ Tools/\n')
-                f.write('PATH=$PATH:/c/Windows/Microsoft.NET/Framework/v4.0.30319/\n')
+                f.write('PATH=/c/Program\ Files\ \(x86\)/Microsoft\ SDKs/Windows/v10.0A/bin/NETFX\ 4.6\ Tools/:$PATH\n')
+                f.write('PATH=/c/Windows/Microsoft.NET/Framework/v4.0.30319/:$PATH\n')
                 f.write('cd ' + Helper.winpath_to_msyspath(self.SrcDir + '\n'))
                 f.write('./autogen.sh --prefix=/tmp/install\n')
                 f.write('make clean\n')
