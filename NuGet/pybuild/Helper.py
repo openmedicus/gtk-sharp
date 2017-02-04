@@ -66,7 +66,7 @@ class Helper(object):
 
     @staticmethod
     def install_pacman_deps():
-        Helper.run_pacman_cmd(['-Sy'])
+        # Helper.run_pacman_cmd(['-Sy'])
 
         args = ['--needed', '--noconfirm', '-S']
         args += 'unzip autoconf automake libtool pkg-config make'.split(' ')
