@@ -27,17 +27,47 @@ namespace Gtk {
 	using System;
 		
 	public partial class TextTag {
-				
+
 		public Pango.Weight Weight {
 			get {
 				GLib.Value val = GetProperty ("weight");
-				Pango.Weight ret = (Pango.Weight) (int) val;
+				Pango.Weight ret = (Pango.Weight)(int)val;
 				val.Dispose ();
 				return ret;
 			}
 			set {
-				GLib.Value val = new GLib.Value ((int) value);
+				GLib.Value val = new GLib.Value ((int)value);
 				SetProperty ("weight", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("background-rgba")]
+		public Gdk.RGBA BackgroundRGBA {
+			get {
+				var val = GetProperty ("background-rgba");
+				var ret = (Gdk.RGBA)val.Val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				var val = new GLib.Value (value);
+				SetProperty ("background-rgba", val);
+				val.Dispose ();
+			}
+		}
+
+		[GLib.Property ("foreground-rgba")]
+		public Gdk.RGBA ForegroundRGBA {
+			get {
+				var val = GetProperty ("foreground-rgba");
+				var ret = (Gdk.RGBA)val.Val;
+				val.Dispose ();
+				return ret;
+			}
+			set {
+				var val = new GLib.Value (value);
+				SetProperty ("foreground-rgba", val);
 				val.Dispose ();
 			}
 		}
